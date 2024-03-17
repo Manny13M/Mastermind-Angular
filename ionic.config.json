@@ -1,0 +1,7 @@
+{
+  "name": "mastermindFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
