@@ -13,8 +13,51 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <form>
+    <ion-item>
+      <ion-label position="stacked">First Colour</ion-label>
+      <ion-select [(ngModel)]="firstColour" name="colour1" >
+        <ion-select-option *ngFor="let color of colors" [value]="color">{{ color }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="stacked">Second Colour</ion-label>
+      <ion-select [(ngModel)]="secondColour" name="colour2" >
+        <ion-select-option *ngFor="let color of colors" [value]="color">{{ color }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="stacked">Third Colour</ion-label>
+      <ion-select [(ngModel)]="thirdColour" name="colour3" >
+        <ion-select-option *ngFor="let color of colors" [value]="color">{{ color }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="stacked">Fourth Colour</ion-label>
+      <ion-select [(ngModel)]="fourthColour" name="colour4" >
+        <ion-select-option *ngFor="let color of colors" [value]="color">{{ color }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button type="submit" (click)="submitGuess()">Submit Guess</ion-button> 
+
+  </form>
+
+  <ion-list>
+    <ion-item *ngFor="let record of turnRecords">
+      <ion-label>
+        <h2>Guess</h2>
+        <p>{{ record.guess.join(', ') }}</p>
+      </ion-label>
+      <ion-label>
+        <h2>Feedback</h2>
+        <p>Black: {{ countOccurrences(record.feedback, 'Black') }}, White: {{ countOccurrences(record.feedback, 'White') }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  {{outMsg}}
+
 </ion-content>
